@@ -1,21 +1,23 @@
-import { useSelector } from 'react-redux';
-import { ContactForm } from './ContactForm';
-import { ContactList } from './ContactList';
-import { Filter } from './Filter';
-import { selectError, selectIsLoading } from 'redux/selectors';
+import { Routes, Route } from 'react-router-dom';
+import { lazy } from 'react';
+import { Layout } from './Layout';
+
+const Home = lazy(() => import('../pages/HomePage'));
+const Contacts = lazy(() => import('../pages/ContactsPage'));
+const Login = lazy(() => import('../pages/LoginPage'));
+const Register = lazy(() => import('../pages/RegisterPage'));
 
 export const App = () => {
-  const isLoading = useSelector(selectIsLoading);
-  const error = useSelector(selectError);
   return (
-    <div className="App">
-      <h1>Phonebook</h1>
-      <ContactForm />
-      <h2>Contacts</h2>
-      <Filter />
-      {isLoading && <h2>Loading...</h2>}
-      {error && <p>{error}</p>}
-      <ContactList />
+    <div>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="contacts" element={<Contacts />} />
+          <Route path="login" element={<Login />} />
+          <Route path="register" element={<Register />} />
+        </Route>
+      </Routes>
     </div>
   );
 };
