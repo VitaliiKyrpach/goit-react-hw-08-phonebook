@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { nanoid } from 'nanoid';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'redux/contacts/operations';
 import { selectUsers } from 'redux/contacts/selectors';
@@ -21,7 +20,7 @@ export const ContactForm = () => {
       alert(`${isUser.name} is already in contacts`);
       return;
     }
-    dispatch(addContact({ id: nanoid(), name, phone: number }));
+    dispatch(addContact({ name, number }));
     setName('');
     setNumber('');
   };

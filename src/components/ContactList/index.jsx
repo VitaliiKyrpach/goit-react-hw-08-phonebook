@@ -13,8 +13,10 @@ export const ContactList = () => {
   return (
     <ul>
       {filtered &&
-        filtered.map(({ id, name, phone }) => {
-          return <ContactListItem key={id} id={id} user={name} phone={phone} />;
+        filtered.map(({ id, name, number }) => {
+          return (
+            <ContactListItem key={id} id={id} user={name} phone={number} />
+          );
         })}
     </ul>
   );
