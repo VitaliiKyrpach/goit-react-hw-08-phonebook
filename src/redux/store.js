@@ -1,8 +1,12 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
-import { reducer } from './reducer';
+import { contReducer } from './contacts/reducer';
+import { authReducer } from './auth/authSlice';
 
 export const store = configureStore({
-  reducer: reducer,
+  reducer: {
+    auth: authReducer,
+    contacts: contReducer,
+  },
   middleware: getDefaultMiddleware({
     serializableCheck: false,
   }),

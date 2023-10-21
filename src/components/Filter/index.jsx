@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { typeFilter } from 'redux/filterSlice';
+import { typeFilter } from 'redux/contacts/filterSlice';
 export const Filter = () => {
   const dispatch = useDispatch();
   const query = useSelector(state => state.filter);
